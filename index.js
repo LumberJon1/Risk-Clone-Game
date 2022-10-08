@@ -1,3 +1,6 @@
+// Import necessary classes
+import {Player} from "./player.js";
+
 // Selectors
 const mapBackgroundEl = document.getElementById("map-container");
 
@@ -64,3 +67,8 @@ const populateMap = () => {
 
 // Testbed
 populateMap();
+
+// Sample unit added to player's groups
+let player1 = new Player();
+console.log(player1.unitGroups);
+player1.addUnit(5, ["Tank", "50", "100"]);
