@@ -7,6 +7,15 @@ const mapBackgroundEl = document.getElementById("map-container");
 const numMapDivisionsX = 10;
 const numMapDivisionsY = 10;
 
+// Array of tile colors
+const tileColors = [
+    ["tileMountain", "bg-gray-600"],
+    ["tileForest", "bg-lime-800"],
+    ["tileOpen", "bg-lime-600"],
+    ["tileUrban", "bg-stone-600"],
+    ["tileRiver", "bg-cyan-300"]
+];
+
 
 // Populate map with tiles
 const populateMap = () => {
@@ -31,12 +40,22 @@ const populateMap = () => {
             let row = document.createElement("div");
             row.style.height = ((mapHeight/numMapDivisionsY))+"px";
             row.style.width = ((mapWidth/numMapDivisionsX))+"px";
+            row.classList.add("mapTile");
+
+            // Randomly assign a color to each of the tiles from a pool of allowable colors
+            let randomColor = Math.trunc((Math.random()*5));
+            console.log("randomColor:", randomColor);
+
+            row.classList.add(tileColors[randomColor][0]);
+            row.classList.add(tileColors[randomColor][1]);
+            console.log(tileColors[randomColor][1])
+
             column.appendChild(row);
         }
         mapBackgroundEl.appendChild(column);
     }
 
-    // Randomly assign a color to each of the tiles from a pool of allowable colors
+
 
     // Will eventually also assign classes with the color assignment to indicate terrain, etc.
 }
